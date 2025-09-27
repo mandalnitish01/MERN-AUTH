@@ -170,7 +170,8 @@ async function sendVerificationCode(
         success: true,
         message: `OTP sent.`,
       });
-    } else {
+    }
+     else {
       return res.status(500).json({
         success: false,
         message: "Invalid verification method.",
@@ -208,7 +209,6 @@ function generateEmailTemplate(verificationCode) {
 }
 
 //verifiy your account
-
 const verifyOTP = catchAsyncError(async (req, res, next) => {
   // console.log("pagal hai kya, pagal hai kya tuu")
   // console.log(req.body);
@@ -281,6 +281,7 @@ const verifyOTP = catchAsyncError(async (req, res, next) => {
     return next(new ErrorHandler("Internal server error", 500));
   }
 });
+
 
 //login controller
 const login = catchAsyncError(async (req, res, next) => {
