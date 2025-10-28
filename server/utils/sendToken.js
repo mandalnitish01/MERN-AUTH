@@ -15,4 +15,7 @@ export const sendToken = (user, statusCode, message, res) => {
       token,
       user,
     });
+    console.log(" token sent successfully ");
+    //response send
+    console.log(" response sent successfully ");
 };
