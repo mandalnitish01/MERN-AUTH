@@ -44,7 +44,7 @@ const register = catchAsyncError(async (req, res, next) => {
     }
 
     //if user hit multiple request at the ssame time then we can prevent that situation by using this code file,
-
+    //this will help you to prevent your website from attackers
     const registerationAttemptsByUser = await User.find({
       $or: [
         { email: email, accountVerified: false },
@@ -60,7 +60,7 @@ const register = catchAsyncError(async (req, res, next) => {
         )
       );
     }
-
+    
     // Create a new user
     const userData = {
       name,
@@ -68,7 +68,7 @@ const register = catchAsyncError(async (req, res, next) => {
       phone,
       password,
     };
-
+        
     const user = await User.create(userData);
     const verificationCode = await user.generateVerificationCode();
     console.log(`Your verification code is before save: ${verificationCode}`);
@@ -297,7 +297,7 @@ const login = catchAsyncError(async (req, res, next) => {
   if (!user) {
     return next(new ErrorHandler("Invalid email or password", 400));
   }
-
+   
   const isPasswordMatched = await user.comparePassword(password);
   if (!isPasswordMatched) {
     return next(new ErrorHandler("Invalid email and password", 400));

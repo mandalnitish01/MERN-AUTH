@@ -11,7 +11,6 @@ const connection = async () => {
     console.error("Database connection failed:", error);
     process.exit(1); // Exit the process with failure
   });
-
 };
 
 export default connection;
